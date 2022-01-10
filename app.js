@@ -53,12 +53,19 @@ function handleCanvasClick(event){
     
 }
 
+// 마우스 이미지 다운 방지
+function handleCM(event){
+    event.preventDefault();
+    console.log(event)
+}
+
 if(canvas){
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", stratPainting);
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
     canvas.addEventListener("click", handleCanvasClick);
+    canvas.addEventListener("contextmenu", handleCM);
 }
 
 
@@ -115,4 +122,22 @@ function handleModeClick(event){
 
 if(mode){
     mode.addEventListener("click", handleModeClick);
+}
+
+// 저장하기
+
+const saveBtn = document.getElementById('jsSave');
+
+
+function handleSaveClick(event){
+    const image = canvas.toDataURL('image/jpeg');
+    // console.log(image)
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = "PaintJS";
+    link.click();
+}
+
+if(saveBtn){
+    saveBtn.addEventListener("click", handleSaveClick);
 }
