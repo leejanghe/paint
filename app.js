@@ -1,3 +1,4 @@
+// 선채우기
 const canvas = document.getElementById('jsCanvas');
 const ctx = canvas.getContext("2d");
 
@@ -48,3 +49,38 @@ if(canvas){
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
 }
+
+
+// 색상 바꾸기
+
+const colors = document.getElementsByClassName('jsColor');
+
+console.log(Array.from(colors))
+
+
+
+
+Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick));
+
+function handleColorClick(event){
+    // console.log(event.target.style)
+    const color = event.target.style.backgroundColor;
+    console.log(color)
+    ctx.strokeStyle = color;
+}
+
+
+// 선 굵기 바꾸기
+
+const range = document.getElementById('jsRange');
+
+function handleRangeChange(event){
+    const size = event.target.value
+    ctx.lineWidth = size
+}
+
+
+if(range){
+    range.addEventListener("input", handleRangeChange);
+}
+
