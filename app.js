@@ -141,3 +141,16 @@ function handleSaveClick(event){
 if(saveBtn){
     saveBtn.addEventListener("click", handleSaveClick);
 }
+
+
+// 리셋 기능
+
+const reset = document.getElementById('jsReset');
+
+function handleResetClick(event){
+    window.location.reload()
+}
+
+if(reset){
+    reset.addEventListener("click", handleResetClick);
+}
